@@ -1,18 +1,20 @@
 ---
 include:
-  # Left Peripheral
+  # 1. Physical Left Keyboard (Forced to act as a Peripheral)
   - board: nice_nano_v2
     shield: corne_left nice_oled
-  
-  # Right Peripheral
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+
+  # 2. Physical Right Keyboard (Peripheral by default)
   - board: nice_nano_v2
     shield: corne_right nice_oled
-  
-  # Settings Reset (Crucial for pairing a new dongle)
+
+  # 3. Settings Reset
   - board: nice_nano_v2
     shield: settings_reset
-  
-  # The Central Dongle
+
+  # 4. Central Dongle (Told to look for TWO keyboard halves)
   - board: nice_nano_v2
     shield: corne_left dongle_display
     snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
