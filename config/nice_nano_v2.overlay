@@ -1,0 +1,6 @@
+/ {
+    aliases {
+        /* Redirects the dongle display code to use nice!nano pins */
+        xiao-i2c = &pro_micro_i2c;
+    };
+};
